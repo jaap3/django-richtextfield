@@ -1,8 +1,25 @@
 from django.test import TestCase
+from django.utils.unittest import skipUnless
 from djwysiwygfield.models import WysiwygField
 from djwysiwygfield.widgets import WysiwygWidget
+try:
+    from south import modelsinspector
+except ImportError:
+    modelsinspector = False
+
+
+@skipUnless(modelsinspector, 'South is not installed')
+class TestSouthIntrospection(TestCase):
+    def test_field_can_introspect(self):
+        """
+        South can introspect this field
+        """
+        self.assertTrue(modelsinspector.can_introspect(WysiwygField))
 
 
 class TestWysiwygField(TestCase):
-    def test_formfield(self):
+    def test_formfield_widget(self):
+        """
+        Formfield has WysiwygWidget
+        """
         self.assertIsInstance(WysiwygField().formfield().widget, WysiwygWidget)

@@ -1,0 +1,5 @@
+Django
+wheel
+coverage
+flake8
+tox

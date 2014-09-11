@@ -1,0 +1,7 @@
+include AUTHORS.rst
+include HISTORY.rst
+include LICENSE
+include README.rst
+include manage.py
+recursive-include djwysiwygfield *.py
+recursive-include testproject *.py

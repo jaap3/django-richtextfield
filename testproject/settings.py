@@ -91,3 +91,26 @@ try:
     from django.test.runner import DiscoverRunner  # noqa
 except ImportError:
     TEST_RUNNER = 'discover_runner.DiscoverRunner'
+
+
+# Django WYSIWYG Field
+DJWYSIWYG_TINYMCE_CONFIG = {
+    'js': ['//tinymce.cachefly.net/4.1/tinymce.min.js'],
+    'init': '''
+            if (!tinymce.editors[id]) {
+                settings.selector = "#" + id;
+                tinymce.init(settings);
+            }
+            '''
+}
+
+DJWYSIWYG_CKEDITOR_CONFIG = {
+    'js': ['//cdn.ckeditor.com/4.4.4/standard/ckeditor.js'],
+    'init': '''
+            if (!CKEDITOR.instances[id]) {
+                CKEDITOR.replace(id, settings);
+            }
+            '''
+}
+
+DJWYSIWYG_CONFIG = DJWYSIWYG_TINYMCE_CONFIG

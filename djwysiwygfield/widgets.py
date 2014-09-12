@@ -1,8 +1,14 @@
 import json
 from django.core.urlresolvers import reverse
 from django.forms.widgets import Textarea, Media
-from django.utils.html import format_html
 from djwysiwygfield import settings
+try:
+    from django.utils.html import format_html
+except ImportError:  # Django 1.4
+    from django.utils.safestring import mark_safe
+
+    def format_html(format_string, *args, **kwargs):
+        return mark_safe(format_string.format(*args, **kwargs))
 
 
 class WysiwygWidget(Textarea):

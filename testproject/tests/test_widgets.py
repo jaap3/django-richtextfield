@@ -1,4 +1,5 @@
-from django.test import TestCase, override_settings
+from django.test import TestCase
+from django.test.utils import override_settings
 from testproject import settings
 from djwysiwygfield.widgets import WysiwygWidget
 
@@ -30,7 +31,7 @@ class TestWysiwygWidget(TestCase):
         the wysiwyg-settings data attribute.
         """
         widget = WysiwygWidget()
-        self.assertEqual(
+        self.assertHTMLEqual(
             '<div class="field-box">'
             '<textarea class="djwysiwyg" cols="40"'
             ' data-wysiwyg-settings="{}"'

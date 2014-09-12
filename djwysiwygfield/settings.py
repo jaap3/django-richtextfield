@@ -12,9 +12,9 @@ CONFIG.update(getattr(settings, 'DJWYSIWYG_CONFIG', {}))
 
 
 @receiver(setting_changed)
-def update_settings(setting=None, value=None, enter=None, **kwargs):
+def update_settings(setting=None, value=None, **kwargs):
     global CONFIG
     if setting == 'DJWYSIWYG_CONFIG':
         CONFIG = DEFAULT_CONFIG.copy()
-        if enter:
+        if value:
             CONFIG.update(value)

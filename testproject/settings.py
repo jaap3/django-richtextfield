@@ -93,7 +93,7 @@ except ImportError:
 
 
 # Django WYSIWYG Field
-DJWYSIWYG_TINYMCE_CONFIG = {
+TINYMCE_CONFIG = {
     'js': ['//tinymce.cachefly.net/4.1/tinymce.min.js'],
     'init': '''
             if (!tinymce.editors[id]) {
@@ -111,7 +111,7 @@ DJWYSIWYG_TINYMCE_CONFIG = {
     }
 }
 
-DJWYSIWYG_CKEDITOR_CONFIG = {
+CKEDITOR_CONFIG = {
     'js': ['//cdn.ckeditor.com/4.4.4/standard/ckeditor.js'],
     'init': '''
             if (!CKEDITOR.instances[id]) {
@@ -129,4 +129,4 @@ DJWYSIWYG_CKEDITOR_CONFIG = {
     }
 }
 
-#DJWYSIWYG_CONFIG = DJWYSIWYG_CKEDITOR_CONFIG
+# DJWYSIWYG_CONFIG =

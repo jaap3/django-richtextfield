@@ -2,7 +2,7 @@
     function initWysiwyg($e) {
         if ($e.parents('.empty-form').length == 0) {  // Don't do empty inlines
             var id = $e.attr('id');
-            var settings = {};
+            var settings = $.parseJSON($e.attr('data-wysiwyg-settings'));
             {{ init|safe }}
         }
     }

@@ -17,7 +17,19 @@ project's ``INSTALLED_APPS``::
 Configure ``djwysiwygfield`` (using TinyMCE from a CDN)::
 
     DJWYSIWYG_CONF = {
-        'js': ['//tinymce.cachefly.net/4.1/tinymce.min.js']
+        'js': ['//tinymce.cachefly.net/4.1/tinymce.min.js'],
+        'init': '''
+            if (!tinymce.editors[id]) {
+                settings.selector = "#" + id;
+                tinymce.init(settings);
+            }
+            ''',
+        'settings': {
+            'menubar': False,
+            'plugins': 'link image',
+            'toolbar': 'bold italic | link image | removeformat',
+            'width': 700
+        }
     }
 
 Now you're ready to use the field in your models and forms::
@@ -35,7 +47,8 @@ or::
     from djwysiwygfield.widgets import WysiwygWidget
 
     class CommentForm(forms.ModelForm):
-        content = forms.CharField(widget=WysiwygWidget)
+        content = forms.CharField(widget=WysiwygWidget())
+        content.widget.wysiwyg_settings = {'toolbar': 'bold italic'}
 
 .. _TinyMCE: http://www.tinymce.com/
 .. _CKEditor: http://ckeditor.com/

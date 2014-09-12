@@ -26,13 +26,16 @@ class TestWysiwygWidget(TestCase):
 
     def test_render(self):
         """
-        Test that the rendered textarea is surrounded with a clearing div
+        Test that the rendered textarea is surrounded with a div and includes
+        the wysiwyg-settings data attribute.
         """
         widget = WysiwygWidget()
         self.assertEqual(
             '<div class="field-box">'
-            '<textarea class="djwysiwyg" cols="40" name="test" rows="10">\r\n'
-            '</textarea></div>', widget.render('test', ''))
+            '<textarea class="djwysiwyg" cols="40"'
+            ' data-wysiwyg-settings="{}"'
+            ' name="test" rows="10">\r\n</textarea>'
+            '</div>', widget.render('test', ''))
 
 
 class SettingsTestCase(TestCase):

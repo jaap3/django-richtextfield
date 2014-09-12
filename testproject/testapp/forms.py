@@ -3,4 +3,4 @@ from djwysiwygfield.widgets import WysiwygWidget
 
 
 class CommentForm(forms.ModelForm):
-    content = forms.CharField(widget=WysiwygWidget)
+    content = forms.CharField(widget=WysiwygWidget())

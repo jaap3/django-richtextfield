@@ -95,12 +95,7 @@ except ImportError:
 # Django Rich Text Field
 TINYMCE_CONFIG = {
     'js': ['//tinymce.cachefly.net/4.1/tinymce.min.js'],
-    'init': '''
-            if (!tinymce.editors[id]) {
-                settings.selector = "#" + id;
-                tinymce.init(settings);
-            }
-            ''',
+    'init_template': 'djrichtextfield/init/tinymce.js',
     'settings': {
         'menubar': False,
         'plugins': 'link image table code',
@@ -113,11 +108,7 @@ TINYMCE_CONFIG = {
 
 CKEDITOR_CONFIG = {
     'js': ['//cdn.ckeditor.com/4.4.4/standard/ckeditor.js'],
-    'init': '''
-            if (!CKEDITOR.instances[id]) {
-                CKEDITOR.replace(id, settings);
-            }
-            ''',
+    'init': 'djrichtextfield/init/ckeditor.js',
     'settings': {
         'toolbar': [
             {'items': ['Format', '-', 'Bold', 'Italic', '-', 'RemoveFormat']},
@@ -129,4 +120,4 @@ CKEDITOR_CONFIG = {
     }
 }
 
-# DJRICHTEXTFIELD_CONFIG =
+# DJRICHTEXTFIELD_CONFIG = TINYMCE_CONFIG

@@ -3,7 +3,7 @@
         if ($e.parents('.empty-form').length == 0) {  // Don't do empty inlines
             var id = $e.attr('id');
             var settings = $.parseJSON($e.attr('data-field-settings'));
-            {{ init|safe }}
+            {% include init_template %}
         }
     }
 

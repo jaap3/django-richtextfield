@@ -4,7 +4,7 @@ from django.test.signals import setting_changed
 
 DEFAULT_CONFIG = {
     'js': [],
-    'init': 'alert(id);',
+    'init_template': None,
     'settings': {}
 }
 CONFIG = DEFAULT_CONFIG.copy()

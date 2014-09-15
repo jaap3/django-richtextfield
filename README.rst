@@ -18,12 +18,7 @@ Configure ``djrichtextfield`` (using TinyMCE from a CDN)::
 
     DJRICHTEXTFIELD_CONF = {
         'js': ['//tinymce.cachefly.net/4.1/tinymce.min.js'],
-        'init': '''
-            if (!tinymce.editors[id]) {
-                settings.selector = "#" + id;
-                tinymce.init(settings);
-            }
-            ''',
+        'init_template': 'djrichtextfield/init/tinymce.js',
         'settings': {
             'menubar': False,
             'plugins': 'link image',

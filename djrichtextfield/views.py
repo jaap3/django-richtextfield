@@ -7,10 +7,9 @@ class InitView(TemplateView):
     content_type = 'application/javascript'
 
     def get_context_data(self, **kwargs):
-        kwargs.update({
-            'init': settings.CONFIG['init']
-        })
-        return super(InitView, self).get_context_data(**kwargs)
+        context_data = super(InitView, self).get_context_data(**kwargs)
+        context_data['init_template'] = settings.CONFIG['init_template']
+        return context_data
 
     def render_to_response(self, context, **response_kwargs):
         # Django 1.4 doesn't use self.content_type, so we fix this here

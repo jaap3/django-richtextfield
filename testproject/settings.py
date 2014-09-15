@@ -106,7 +106,7 @@ TINYMCE_CONFIG = {
     },
     'profiles': {
         'mini': {
-           'toolbar': 'bold italic | removeformat'
+            'toolbar': 'bold italic | removeformat'
         }
     }
 }

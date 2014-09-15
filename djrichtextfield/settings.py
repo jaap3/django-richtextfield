@@ -14,7 +14,7 @@ CONFIG.update(getattr(settings, 'DJRICHTEXTFIELD_CONFIG', {}))
 @receiver(setting_changed)
 def update_settings(setting=None, value=None, **kwargs):
     global CONFIG
-    if setting == 'DJRICHTEXTFIELD_CONFIG':
+    if setting == 'DJRICHTEXTFIELD_CONFIG':  # pragma: no branch
         CONFIG = DEFAULT_CONFIG.copy()
-        if value:
+        if value:  # pragma: no branch
             CONFIG.update(value)

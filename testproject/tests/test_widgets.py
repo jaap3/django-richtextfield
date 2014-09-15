@@ -4,6 +4,16 @@ from django.test.utils import override_settings
 from django.utils.html import escape
 from djrichtextfield.widgets import RichTextWidget
 
+CONFIG = {
+    'js': ['foo.js'],
+    'settings': {'foo': True, 'bar': [1, 2, 3]},
+    'profiles': {
+        'simple': {'bar': [1, 2]}
+    }
+}
+NO_PROFILES_CONFIG = CONFIG.copy()
+del NO_PROFILES_CONFIG['profiles']
+
 
 class TestRichTextWidget(TestCase):
     def test_css_class(self):
@@ -26,12 +36,6 @@ class TestRichTextWidget(TestCase):
         widget = RichTextWidget({'class': 'somethingelse'})
         self.assertEqual(
             widget.attrs['class'], 'somethingelse djrichtextfield')
-
-
-CONFIG = {
-    'js': ['foo.js'],
-    'settings': {'foo': True, 'bar': [1, 2, 3]}
-}
 
 
 @override_settings(DJRICHTEXTFIELD_CONFIG=CONFIG)
@@ -61,10 +65,9 @@ class SettingsTestCase(TestCase):
 
     def test_render_with_settings(self):
         """
-        Test that the rendered textarea is surrounded with a div
-        and includes the correct data attribute.
+        The field includes the correct data attribute.
         """
-        settings = {'foo': 'bar'}
+        settings = {'foo': False}
         widget = RichTextWidget(field_settings=settings)
         config = json.dumps(settings)
         expected = ('<div class="field-box">'
@@ -73,3 +76,32 @@ class SettingsTestCase(TestCase):
                     ' name="" rows="10">\r\n</textarea>'
                     '</div>'.format(escape(config)))
         self.assertHTMLEqual(expected, widget.render('', ''))
+
+    def test_render_with_profile(self):
+        """
+        The field includes the correct data attribute.
+        """
+        widget = RichTextWidget(field_settings='simple')
+        config = json.dumps(self.config['profiles']['simple'])
+        expected = ('<div class="field-box">'
+                    '<textarea class="djrichtextfield" cols="40"'
+                    ' data-field-settings="{0}"'
+                    ' name="" rows="10">\r\n</textarea>'
+                    '</div>'.format(escape(config)))
+        self.assertHTMLEqual(expected, widget.render('', ''))
+
+    def test_render_with_missing_profile(self):
+        """
+        The field gets rendered without a data attribute.
+        """
+        widget = RichTextWidget(field_settings='missing')
+        expected = ('<div class="field-box">'
+                    '<textarea class="djrichtextfield" cols="40"'
+                    ' name="" rows="10">\r\n</textarea>'
+                    '</div>')
+        self.assertHTMLEqual(expected, widget.render('', ''))
+
+
+@override_settings(DJRICHTEXTFIELD_CONFIG=NO_PROFILES_CONFIG)
+class NoProfilesSettingsTestCase(TestCase):
+    config = NO_PROFILES_CONFIG

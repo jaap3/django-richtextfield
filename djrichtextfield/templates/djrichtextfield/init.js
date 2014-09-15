@@ -1,8 +1,14 @@
 (function ($) {
+    var default_settings = {{ default_settings }};
+
     function initField($e) {
         if ($e.parents('.empty-form').length == 0) {  // Don't do empty inlines
             var id = $e.attr('id');
-            var settings = $.parseJSON($e.attr('data-field-settings'));
+            var custom_settings = {};
+            if ($e.attr('data-field-settings')) {
+                custom_settings = $.parseJSON($e.attr('data-field-settings'));
+            }
+            var settings = $.extend({}, default_settings, custom_settings);
             {% include init_template %}
         }
     }

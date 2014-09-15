@@ -1,3 +1,5 @@
+import json
+from django.utils.safestring import mark_safe
 from django.views.generic import TemplateView
 from djrichtextfield import settings
 
@@ -8,6 +10,8 @@ class InitView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context_data = super(InitView, self).get_context_data(**kwargs)
+        context_data['default_settings'] = mark_safe(
+            json.dumps(settings.CONFIG['settings']))
         context_data['init_template'] = settings.CONFIG['init_template']
         return context_data
 

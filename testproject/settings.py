@@ -103,12 +103,17 @@ TINYMCE_CONFIG = {
                    ' link unlink image table | code',
         'block_formats': 'Paragraph=p;Header 1=h1;Header 2=h2;Header 3=h3',
         'width': 700
+    },
+    'profiles': {
+        'mini': {
+           'toolbar': 'bold italic | removeformat'
+        }
     }
 }
 
 CKEDITOR_CONFIG = {
     'js': ['//cdn.ckeditor.com/4.4.4/standard/ckeditor.js'],
-    'init': 'djrichtextfield/init/ckeditor.js',
+    'init_template': 'djrichtextfield/init/ckeditor.js',
     'settings': {
         'toolbar': [
             {'items': ['Format', '-', 'Bold', 'Italic', '-', 'RemoveFormat']},
@@ -117,7 +122,14 @@ CKEDITOR_CONFIG = {
         ],
         'format_tags': 'p;h1;h2;h3',
         'width': 700,
+    },
+    'profiles': {
+        'mini': {
+            'toolbar': [
+                {'items': ['Bold', 'Italic', '-', 'RemoveFormat']},
+            ]
+        }
     }
 }
 
-# DJRICHTEXTFIELD_CONFIG = TINYMCE_CONFIG
+DJRICHTEXTFIELD_CONFIG = CKEDITOR_CONFIG

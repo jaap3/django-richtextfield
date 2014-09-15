@@ -34,9 +34,8 @@ class RichTextWidget(Textarea):
 
     def render(self, name, value, attrs=None):
         attrs = attrs or {}
-        field_settings = settings.CONFIG['settings'].copy()
-        field_settings.update(self.field_settings)
-        attrs[self.SETTINGS_ATTR] = json.dumps(field_settings)
+        if self.field_settings:
+            attrs[self.SETTINGS_ATTR] = json.dumps(self.field_settings)
         textarea = super(RichTextWidget, self).render(name, value, attrs=attrs)
         return format_html(
             '<div class="{0}">{1}</div>', self.CONTAINER_CLASS, textarea)

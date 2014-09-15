@@ -2,8 +2,10 @@
 The following JS variables are available from the calling function:
 
 $e: jQuery wrapped textarea to be replaced
-id: The value of the id attribute of this textarea
-settings: The parsed JSON data attribute of the textarea
+id: The `id` attribute of this textarea
+default_settings: `DJRICHTEXTFIELD_CONFIG['settings']` as a JS object
+custom_settings: The parsed value of `data-field-settings`
+settings: Merge of `default_settings` and `custom_settings`
 */
 if (!CKEDITOR.instances[id]) {
     CKEDITOR.replace(id, settings);

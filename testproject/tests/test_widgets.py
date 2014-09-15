@@ -50,10 +50,23 @@ class SettingsTestCase(TestCase):
     def test_render(self):
         """
         Test that the rendered textarea is surrounded with a div
-        and includes the correct data attribute.
+        and doesn't include any settings.
         """
         widget = RichTextWidget()
-        config = json.dumps(self.config['settings'])
+        expected = ('<div class="field-box">'
+                    '<textarea class="djrichtextfield" cols="40"'
+                    ' name="" rows="10">\r\n</textarea>'
+                    '</div>')
+        self.assertHTMLEqual(expected, widget.render('', ''))
+
+    def test_render_with_settings(self):
+        """
+        Test that the rendered textarea is surrounded with a div
+        and includes the correct data attribute.
+        """
+        settings = {'foo': 'bar'}
+        widget = RichTextWidget(field_settings=settings)
+        config = json.dumps(settings)
         expected = ('<div class="field-box">'
                     '<textarea class="djrichtextfield" cols="40"'
                     ' data-field-settings="{0}"'

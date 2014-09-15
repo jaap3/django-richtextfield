@@ -2,6 +2,12 @@
 Django Rich Text Field
 ======================
 
+.. image:: https://travis-ci.org/EightMedia/django-richtextfield.svg?branch=master
+    :target: https://travis-ci.org/EightMedia/django-richtextfield
+
+.. image:: https://coveralls.io/repos/EightMedia/django-richtextfield/badge.png?branch=master
+    :target: https://coveralls.io/r/EightMedia/django-richtextfield?branch=master
+
 A Django model field and widget that renders a customizable rich
 text/WYSIWYG widget. Tested with TinyMCE_ and CKEditor_. Designed to be
 easily extended to use other editors.

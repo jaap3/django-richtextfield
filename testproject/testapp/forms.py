@@ -1,6 +1,6 @@
 from django import forms
-from djwysiwygfield.widgets import WysiwygWidget
+from djrichtextfield.widgets import RichTextWidget
 
 
 class CommentForm(forms.ModelForm):
-    content = forms.CharField(widget=WysiwygWidget())
+    content = forms.CharField(widget=RichTextWidget())

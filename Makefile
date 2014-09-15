@@ -14,10 +14,10 @@ tox:
 	tox
 
 coverage:
-	coverage run --source djwysiwygfield --branch manage.py test
+	coverage run --source djrichtextfield --branch manage.py test
 	coverage report -m
 	coverage html
 	python -mwebbrowser htmlcov/index.html
 
 lint:
-	flake8 djwysiwygfield testproject
+	flake8 djrichtextfield testproject

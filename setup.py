@@ -1,14 +1,14 @@
 import os
 import sys
 
-import djwysiwygfield
+import djrichtextfield
 
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
-version = djwysiwygfield.__version__
+version = djrichtextfield.__version__
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist bdist_wheel upload')
@@ -21,22 +21,22 @@ readme = open('README.rst').read()
 history = open('HISTORY.rst').read()
 
 setup(
-    name='django-wysiwygfield',
+    name='django-richtextfield',
     version=version,
     description='A Django form and model field that renders'
-                ' a customizable WYSIWYG widget',
+                ' a customizable WYSIWYG/rich text widget',
     long_description=readme + '\n\n' + history,
     author='Jaap Roes',
     author_email='jaap.roes@gmail.com',
     url='',
     packages=[
-        'djwysiwygfield',
+        'djrichtextfield',
     ],
     include_package_data=True,
     install_requires=[],
     license="MIT",
     zip_safe=False,
-    keywords='django-wysiwygfield, djwysiwygfield',
+    keywords='django-richtextfield, djrichtextfield django wywiwyg field',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Framework :: Django',

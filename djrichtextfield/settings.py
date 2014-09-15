@@ -8,13 +8,13 @@ DEFAULT_CONFIG = {
     'settings': {}
 }
 CONFIG = DEFAULT_CONFIG.copy()
-CONFIG.update(getattr(settings, 'DJWYSIWYG_CONFIG', {}))
+CONFIG.update(getattr(settings, 'DJRICHTEXTFIELD_CONFIG', {}))
 
 
 @receiver(setting_changed)
 def update_settings(setting=None, value=None, **kwargs):
     global CONFIG
-    if setting == 'DJWYSIWYG_CONFIG':
+    if setting == 'DJRICHTEXTFIELD_CONFIG':
         CONFIG = DEFAULT_CONFIG.copy()
         if value:
             CONFIG.update(value)

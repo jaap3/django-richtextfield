@@ -2,11 +2,14 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase
 
 
-class TestWysiwygInitView(TestCase):
+class TestInitView(TestCase):
+    def setUp(self):
+        self.response = self.client.get(reverse('djrichtextfield_init'))
+
     def test_template(self):
-        response = self.client.get(reverse('djwysiwygfield_init'))
-        self.assertEqual(response.template_name, ['djwysiwygfield/init.js'])
+        self.assertEqual(
+            self.response.template_name, ['djrichtextfield/init.js'])
 
     def test_content_type(self):
-        response = self.client.get(reverse('djwysiwygfield_init'))
-        self.assertEqual(response['content-type'], 'application/javascript')
+        self.assertEqual(
+            self.response['content-type'], 'application/javascript')

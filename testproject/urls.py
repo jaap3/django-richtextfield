@@ -5,5 +5,5 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^djwysiwygfield/', include('djwysiwygfield.urls'))
+    url(r'^djrichtextfield/', include('djrichtextfield.urls'))
 ]

@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'djwysiwygfield',
+    'djrichtextfield',
     'testproject.testapp',
 )
 
@@ -92,7 +92,7 @@ except ImportError:
     TEST_RUNNER = 'discover_runner.DiscoverRunner'
 
 
-# Django WYSIWYG Field
+# Django Rich Text Field
 TINYMCE_CONFIG = {
     'js': ['//tinymce.cachefly.net/4.1/tinymce.min.js'],
     'init': '''
@@ -129,4 +129,4 @@ CKEDITOR_CONFIG = {
     }
 }
 
-# DJWYSIWYG_CONFIG =
+# DJRICHTEXTFIELD_CONFIG =

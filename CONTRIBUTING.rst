@@ -2,19 +2,24 @@
 Contributing
 ============
 
-Contributions are welcome and greatly appreciated, every little bit helps!
+Contributions are welcome and greatly appreciated, be it bug reports,
+additional documentation, feature suggestions, every little bit helps!
 
 Get Started!
 ------------
 
-Ready to contribute? Here's the 6 step plan to submit a pull request:
+First, create an issue in the issue tracker. Then, if you're willing to get
+your hands dirty, get to work! Here's the 5 step plan to submit a
+pull request:
 
 1. Fork the repo, clone your fork locally and create a branch
+   (Tip: use your ticket number as the branch name)
+
 2. Create a virtualenv and install the development requirements::
 
   pip install -r requirements.txt
 
-4. Hack and test until everything works::
+4. Hack and test until everything works (this step may be repeated)::
 
   make test
 
@@ -24,7 +29,8 @@ Ready to contribute? Here's the 6 step plan to submit a pull request:
   make lint
   make coverage
 
-6. If everything passes you're ready to submit a pull request!
+If everything passes you're ready to submit a pull request! (if not, go back
+to step 4)
 
 Pull Request Guidelines
 -----------------------

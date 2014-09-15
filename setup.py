@@ -23,12 +23,12 @@ history = open('HISTORY.rst').read()
 setup(
     name='django-richtextfield',
     version=version,
-    description='A Django form and model field that renders'
-                ' a customizable WYSIWYG/rich text widget',
+    description='A Django model field and widget that renders a'
+                ' customizable WYSIWYG/rich text editor',
     long_description=readme + '\n\n' + history,
     author='Jaap Roes',
-    author_email='jaap.roes@gmail.com',
-    url='',
+    author_email='jaap@eight.nl',
+    url='https://github.com/EightMedia/django-richtextfield',
     packages=[
         'djrichtextfield',
     ],

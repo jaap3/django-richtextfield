@@ -1,7 +1,8 @@
-include AUTHORS.rst
-include HISTORY.rst
+include *.rst
 include LICENSE
-include README.rst
+include Makefile
 include manage.py
-recursive-include djrichtextfield *.py
+include requirements.txt
+include tox.ini
+recursive-include djrichtextfield *.py *.js
 recursive-include testproject *.py

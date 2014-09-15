@@ -4,6 +4,7 @@ from djrichtextfield.models import RichTextField
 
 class Post(models.Model):
     title = models.CharField(max_length=50)
+    lead = RichTextField(field_settings='mini')
     content = RichTextField()
 
     def __str__(self):

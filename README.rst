@@ -21,6 +21,10 @@ project's ``INSTALLED_APPS``::
 
     INSTALLED_APPS += 'djrichtextfield'
 
+Add the urls to the project's urlpatterns:
+
+    url(r'^djrichtextfield/', include('djrichtextfield.urls'))
+
 Configure ``django-richtextfield`` in ``settings.py``::
 
     DJRICHTEXTFIELD_CONFIG = {

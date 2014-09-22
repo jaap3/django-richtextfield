@@ -2,6 +2,7 @@ import json
 from django.core.urlresolvers import reverse
 from django.forms.widgets import Textarea, Media
 from django.utils import six
+from django.utils.encoding import force_text
 from djrichtextfield import settings
 try:
     from django.utils.html import format_html
@@ -52,7 +53,8 @@ class RichTextWidget(Textarea):
         attrs = attrs or {}
         field_settings = self.get_field_settings()
         if field_settings:
-            attrs[self.SETTINGS_ATTR] = json.dumps(field_settings)
+            attrs[self.SETTINGS_ATTR] = json.dumps(field_settings,
+                                                   default=force_text)
         textarea = super(RichTextWidget, self).render(name, value, attrs=attrs)
         return format_html(
             '<div class="{0}">{1}</div>', self.CONTAINER_CLASS, textarea)

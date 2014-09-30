@@ -38,7 +38,7 @@ setup(
     zip_safe=False,
     keywords='django-richtextfield, djrichtextfield django wywiwyg field',
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Framework :: Django',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',

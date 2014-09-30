@@ -2,6 +2,10 @@
 Django Rich Text Field
 ======================
 
+.. image:: https://pypip.in/version/django-richtextfield/badge.svg
+    :target: https://pypi.python.org/pypi/django-richtextfield/
+    :alt: Latest Version
+
 .. image:: https://travis-ci.org/EightMedia/django-richtextfield.svg?branch=master
     :target: https://travis-ci.org/EightMedia/django-richtextfield
 

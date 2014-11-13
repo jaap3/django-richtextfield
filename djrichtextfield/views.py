@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import json
 from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe

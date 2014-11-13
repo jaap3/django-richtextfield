@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import json
 from django.core.urlresolvers import reverse
 from django.forms.widgets import Textarea, Media

@@ -6,11 +6,11 @@ Django Rich Text Field
     :target: https://pypi.python.org/pypi/django-richtextfield/
     :alt: Latest Version
 
-.. image:: https://travis-ci.org/EightMedia/django-richtextfield.svg?branch=master
-    :target: https://travis-ci.org/EightMedia/django-richtextfield
+.. image:: https://travis-ci.org/jaap3/django-richtextfield.svg?branch=master
+    :target: https://travis-ci.org/jaap3/django-richtextfield
 
-.. image:: https://coveralls.io/repos/EightMedia/django-richtextfield/badge.png?branch=master
-    :target: https://coveralls.io/r/EightMedia/django-richtextfield?branch=master
+.. image:: https://coveralls.io/repos/jaap3/django-richtextfield/badge.png?branch=master
+    :target: https://coveralls.io/r/jaap3/django-richtextfield?branch=master
 
 A Django model field and widget that renders a customizable rich
 text/WYSIWYG widget. Tested with TinyMCE_ and CKEditor_. Designed to be

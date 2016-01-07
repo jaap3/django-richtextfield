@@ -28,7 +28,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author='Jaap Roes',
     author_email='jaap@eight.nl',
-    url='https://github.com/EightMedia/django-richtextfield',
+    url='https://github.com/jaap3/django-richtextfield',
     packages=[
         'djrichtextfield',
     ],

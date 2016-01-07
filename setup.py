@@ -27,7 +27,7 @@ setup(
                 ' customizable WYSIWYG/rich text editor',
     long_description=readme + '\n\n' + history,
     author='Jaap Roes',
-    author_email='jaap@eight.nl',
+    author_email='jaap.roes@gmail.com',
     url='https://github.com/jaap3/django-richtextfield',
     packages=[
         'djrichtextfield',

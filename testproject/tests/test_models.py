@@ -23,10 +23,3 @@ class TestRichTextField(TestCase):
         settings = {'foo': True, 'bar': [1, 2, 3]}
         widget = RichTextField(field_settings=settings).formfield().widget
         self.assertEqual(widget.field_settings, settings)
-
-    @skipUnless(modelsinspector, 'South is not installed')
-    def test_field_can_introspect(self):
-        """
-        South can introspect this field
-        """
-        self.assertTrue(modelsinspector.can_introspect(RichTextField))

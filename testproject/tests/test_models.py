@@ -1,11 +1,6 @@
 from django.test import TestCase
-from django.utils.unittest import skipUnless
 from djrichtextfield.models import RichTextField
 from djrichtextfield.widgets import RichTextWidget
-try:
-    from south import modelsinspector
-except ImportError:
-    modelsinspector = False
 
 
 class TestRichTextField(TestCase):

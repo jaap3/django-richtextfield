@@ -1,4 +1,5 @@
 from django.test import TestCase
+
 from djrichtextfield.models import RichTextField
 from djrichtextfield.widgets import RichTextWidget
 

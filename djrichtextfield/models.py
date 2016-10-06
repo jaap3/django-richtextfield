@@ -6,8 +6,6 @@ from djrichtextfield.widgets import RichTextWidget
 
 
 class RichTextField(models.TextField):
-    _south_introspects = True
-
     def __init__(self, *args, **kwargs):
         self.field_settings = None
         if 'field_settings' in kwargs:

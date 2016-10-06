@@ -2,7 +2,7 @@
 Django Rich Text Field
 ======================
 
-.. image:: https://pypip.in/version/django-richtextfield/badge.svg
+.. image:: https://badge.fury.io/py/django-richtextfield.svg
     :target: https://pypi.python.org/pypi/django-richtextfield/
     :alt: Latest Version
 

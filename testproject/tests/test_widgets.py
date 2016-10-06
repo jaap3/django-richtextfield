@@ -13,8 +13,6 @@ CONFIG = {
         'simple': {'bar': [1, 2]}
     }
 }
-NO_PROFILES_CONFIG = CONFIG.copy()
-del NO_PROFILES_CONFIG['profiles']
 
 
 class TestRichTextWidget(TestCase):
@@ -102,8 +100,3 @@ class SettingsTestCase(TestCase):
                     ' name="" rows="10">\r\n</textarea>'
                     '</div>')
         self.assertHTMLEqual(expected, widget.render('', ''))
-
-
-@override_settings(DJRICHTEXTFIELD_CONFIG=NO_PROFILES_CONFIG)
-class NoProfilesSettingsTestCase(TestCase):
-    config = NO_PROFILES_CONFIG

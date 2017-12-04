@@ -1,10 +1,11 @@
 History
 -------
 
-1.1.1 (unreleased)
+1.2 (2017-12-04)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+* Remove support for Django < 1.11
+* Add support for Django 2.0
 
 
 1.1 (2016-01-14)

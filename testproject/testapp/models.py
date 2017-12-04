@@ -18,7 +18,7 @@ class Post(models.Model):
 
 @python_2_unicode_compatible
 class Comment(models.Model):
-    post = models.ForeignKey(Post)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     content = models.TextField()
 
     def __str__(self):

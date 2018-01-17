@@ -23,7 +23,11 @@ Quickstart
 Install ``django-richtextfield`` and add it to your Django
 project's ``INSTALLED_APPS``, ``django.contrib.admin`` must also be in ``INSTALLED_APPS``::
 
-    INSTALLED_APPS += 'djrichtextfield'
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        ...
+        'djrichtextfield'
+    ]
 
 Add the urls to the project's urlpatterns::
 

@@ -32,6 +32,7 @@ class RichTextWidget(Textarea):
         js = settings.CONFIG['js']
         js.extend([
             'admin/js/vendor/jquery/jquery.min.js',
+            'admin/js/jquery.init.js',
             reverse(self.INIT_URL))
         ])
         return Media(js=js)

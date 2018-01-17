@@ -9,7 +9,7 @@ Django Rich Text Field
 .. image:: https://travis-ci.org/jaap3/django-richtextfield.svg?branch=master
     :target: https://travis-ci.org/jaap3/django-richtextfield
 
-.. image:: https://coveralls.io/repos/jaap3/django-richtextfield/badge.png?branch=master
+.. image:: https://coveralls.io/repos/jaap3/django-richtextfield/badge.svg?branch=master
     :target: https://coveralls.io/r/jaap3/django-richtextfield?branch=master
 
 A Django model field and widget that renders a customizable rich
@@ -21,9 +21,13 @@ Quickstart
 ----------
 
 Install ``django-richtextfield`` and add it to your Django
-project's ``INSTALLED_APPS``::
+project's ``INSTALLED_APPS``, ``django.contrib.admin`` must also be in ``INSTALLED_APPS``::
 
-    INSTALLED_APPS += 'djrichtextfield'
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        ...
+        'djrichtextfield'
+    ]
 
 Add the urls to the project's urlpatterns::
 

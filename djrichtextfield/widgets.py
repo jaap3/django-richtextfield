@@ -30,11 +30,11 @@ class RichTextWidget(Textarea):
     @property
     def media(self):
         js = settings.CONFIG['js']
-        js.extend([
+        js += [
             'admin/js/vendor/jquery/jquery.min.js',
             'admin/js/jquery.init.js',
-            reverse(self.INIT_URL))
-        ])
+            reverse(self.INIT_URL)
+        ]
         return Media(js=js)
 
     def get_field_settings(self):

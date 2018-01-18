@@ -1,7 +1,7 @@
 History
 -------
 
-1.2.1 (unreleased)
+1.2.1 (2018-01-18)
 ^^^^^^^^^^^^^^^^^^
 
 * Add `['admin/js/vendor/jquery/jquery.min.js', 'admin/js/jquery.init.js']`

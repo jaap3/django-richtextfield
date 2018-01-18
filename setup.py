@@ -6,7 +6,7 @@ try:
 except ImportError:
     from distutils.core import setup
 
-version = '1.2.1'
+version = '1.2.2.dev0'
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist bdist_wheel upload')

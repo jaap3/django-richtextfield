@@ -4,7 +4,10 @@ History
 1.2.1 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+* Add `['admin/js/vendor/jquery/jquery.min.js', 'admin/js/jquery.init.js']`
+  to `RichTextWidget.media.js`. This makes the widget usable outside of the
+  admin (but still requires `django.contrib.admin` to be in `INSTALLED_APPS`)
+  and prevents javascript errors inside the admin in certain edge cases.
 
 
 1.2 (2017-12-04)

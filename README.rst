@@ -31,7 +31,7 @@ project's ``INSTALLED_APPS``, ``django.contrib.admin`` must also be in ``INSTALL
 
 Add the urls to the project's urlpatterns::
 
-    url(r'^djrichtextfield/', include('djrichtextfield.urls'))
+    path('djrichtextfield/', include('djrichtextfield.urls'))
 
 Configure ``django-richtextfield`` in ``settings.py``::
 

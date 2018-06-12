@@ -1,7 +1,7 @@
 History
 -------
 
-1.2.2 (unreleased)
+1.2.2 (2018-06-12)
 ^^^^^^^^^^^^^^^^^^
 
 * Conditionally load the (un)minified version of jquery depending on ``DEBUG``

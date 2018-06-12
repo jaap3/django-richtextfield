@@ -4,7 +4,8 @@ History
 1.2.2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+* Conditionally load the (un)minified version of jquery depending on ``DEBUG``
+* Load jQuery before all other scripts
 
 
 1.2.1 (2018-01-18)

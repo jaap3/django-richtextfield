@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import json
 
-from django.conf import django_settings
+from django.conf import settings as django_settings
 from django.forms.widgets import Media, Textarea
 from django.urls import reverse
 from django.utils import six

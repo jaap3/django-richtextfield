@@ -49,7 +49,7 @@ class SettingsTestCase(TestCase):
         """
         Test that the correct javascript files are included.
         """
-        self.assertEqual(self.config['js'], self.widget.media._js)
+        self.assertTrue(set(self.config['js']).issubset(self.widget.media._js))
 
     def test_render(self):
         """

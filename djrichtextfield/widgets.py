@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import json
 
+from django.conf import django_settings
 from django.forms.widgets import Media, Textarea
 from django.urls import reverse
 from django.utils import six
@@ -29,9 +30,10 @@ class RichTextWidget(Textarea):
 
     @property
     def media(self):
+        extra = '' if django_settings.DEBUG else '.min'
         js = settings.CONFIG['js']
         js += [
-            'admin/js/vendor/jquery/jquery.min.js',
+            'admin/js/vendor/jquery/jquery%s.js' % extra,
             'admin/js/jquery.init.js',
             reverse(self.INIT_URL)
         ]

@@ -31,12 +31,11 @@ class RichTextWidget(Textarea):
     @property
     def media(self):
         extra = '' if django_settings.DEBUG else '.min'
-        js = settings.CONFIG['js']
-        js += [
+        js = [
             'admin/js/vendor/jquery/jquery%s.js' % extra,
-            'admin/js/jquery.init.js',
-            reverse(self.INIT_URL)
+            'admin/js/jquery.init.js'
         ]
+        js += settings.CONFIG['js'] + [reverse(self.INIT_URL)]
         return Media(js=js)
 
     def get_field_settings(self):

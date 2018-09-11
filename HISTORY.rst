@@ -4,7 +4,7 @@ History
 1.2.3 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Add support for Django 2.1
 
 
 1.2.2 (2018-06-12)

@@ -6,4 +6,4 @@ Development Lead
 Contributors
 ------------
 
-* None yet, are you going to be the first?
+* Arne de Laat <arne <at> delaat.net>

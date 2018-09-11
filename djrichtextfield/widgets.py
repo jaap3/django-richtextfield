@@ -53,12 +53,13 @@ class RichTextWidget(Textarea):
                 field_settings = self.field_settings
         return field_settings
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         attrs = attrs or {}
         field_settings = self.get_field_settings()
         if field_settings:
             attrs[self.SETTINGS_ATTR] = json.dumps(field_settings,
                                                    default=force_text)
-        textarea = super(RichTextWidget, self).render(name, value, attrs=attrs)
+        textarea = super(RichTextWidget, self).render(name, value, attrs=attrs,
+                                                      renderer=renderer)
         return format_html(
             '<div class="{0}">{1}</div>', self.CONTAINER_CLASS, textarea)

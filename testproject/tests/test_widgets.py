@@ -42,7 +42,7 @@ class TestRichTextWidget(TestCase):
 @override_settings(DJRICHTEXTFIELD_CONFIG=CONFIG)
 class SettingsTestCase(TestCase):
     config = CONFIG
-    container_class = 'fieldBox' if django.VERSION >= (2, 1) else 'field-box'
+    container_class = RichTextWidget.CONTAINER_CLASS
 
     def setUp(self):
         self.widget = RichTextWidget()

@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 
-import django
 import json
+
+import django
 
 from django.conf import settings as django_settings
 from django.forms.widgets import Media, Textarea

@@ -1,7 +1,7 @@
 History
 -------
 
-1.2.4 (unreleased)
+1.2.4 (2018-09-25)
 ^^^^^^^^^^^^^^^^^^
 
 - Fix display issue in Django 2.1's admin interface

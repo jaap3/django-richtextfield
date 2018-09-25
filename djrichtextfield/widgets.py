@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 import json
 
+import django
+
 from django.conf import settings as django_settings
 from django.forms.widgets import Media, Textarea
 from django.urls import reverse
@@ -16,7 +18,7 @@ class RichTextWidget(Textarea):
     CSS_CLASS = 'djrichtextfield'
     INIT_URL = 'djrichtextfield_init'
     SETTINGS_ATTR = 'data-field-settings'
-    CONTAINER_CLASS = 'field-box'
+    CONTAINER_CLASS = 'fieldBox' if django.VERSION >= (2, 1) else 'field-box'
     PROFILE_KEY = 'profiles'
 
     def __init__(self, attrs=None, field_settings=None):

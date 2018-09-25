@@ -1,3 +1,4 @@
+import django
 import json
 
 from django.test import TestCase
@@ -41,6 +42,7 @@ class TestRichTextWidget(TestCase):
 @override_settings(DJRICHTEXTFIELD_CONFIG=CONFIG)
 class SettingsTestCase(TestCase):
     config = CONFIG
+    container_class = RichTextWidget.CONTAINER_CLASS
 
     def setUp(self):
         self.widget = RichTextWidget()
@@ -57,10 +59,10 @@ class SettingsTestCase(TestCase):
         and doesn't include any settings.
         """
         widget = RichTextWidget()
-        expected = ('<div class="field-box">'
+        expected = ('<div class="{0}">'
                     '<textarea class="djrichtextfield" cols="40"'
                     ' name="" rows="10">\r\n</textarea>'
-                    '</div>')
+                    '</div>'.format(self.container_class))
         self.assertHTMLEqual(expected, widget.render('', ''))
 
     def test_render_with_settings(self):
@@ -70,11 +72,11 @@ class SettingsTestCase(TestCase):
         settings = {'foo': False}
         widget = RichTextWidget(field_settings=settings)
         config = json.dumps(settings)
-        expected = ('<div class="field-box">'
+        expected = ('<div class="{0}">'
                     '<textarea class="djrichtextfield" cols="40"'
-                    ' data-field-settings="{0}"'
+                    ' data-field-settings="{1}"'
                     ' name="" rows="10">\r\n</textarea>'
-                    '</div>'.format(escape(config)))
+                    '</div>'.format(self.container_class, escape(config)))
         self.assertHTMLEqual(expected, widget.render('', ''))
 
     def test_render_with_profile(self):
@@ -83,11 +85,11 @@ class SettingsTestCase(TestCase):
         """
         widget = RichTextWidget(field_settings='simple')
         config = json.dumps(self.config['profiles']['simple'])
-        expected = ('<div class="field-box">'
+        expected = ('<div class="{0}">'
                     '<textarea class="djrichtextfield" cols="40"'
-                    ' data-field-settings="{0}"'
+                    ' data-field-settings="{1}"'
                     ' name="" rows="10">\r\n</textarea>'
-                    '</div>'.format(escape(config)))
+                    '</div>'.format(self.container_class, escape(config)))
         self.assertHTMLEqual(expected, widget.render('', ''))
 
     def test_render_with_missing_profile(self):
@@ -95,8 +97,8 @@ class SettingsTestCase(TestCase):
         The field gets rendered without a data attribute.
         """
         widget = RichTextWidget(field_settings='missing')
-        expected = ('<div class="field-box">'
+        expected = ('<div class="{0}">'
                     '<textarea class="djrichtextfield" cols="40"'
                     ' name="" rows="10">\r\n</textarea>'
-                    '</div>')
+                    '</div>'.format(self.container_class))
         self.assertHTMLEqual(expected, widget.render('', ''))

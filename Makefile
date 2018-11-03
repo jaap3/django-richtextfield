@@ -20,4 +20,4 @@ coverage:
 	python -mwebbrowser htmlcov/index.html
 
 lint:
-	flake8 djrichtextfield testproject
+	flake8 --exclude migrations djrichtextfield testproject

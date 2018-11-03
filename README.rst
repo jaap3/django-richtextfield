@@ -13,8 +13,8 @@ Django Rich Text Field
     :target: https://coveralls.io/r/jaap3/django-richtextfield?branch=master
 
 A Django model field and widget that renders a customizable rich
-text/WYSIWYG widget. Tested with TinyMCE_ and CKEditor_. Designed to be
-easily extended to use other editors.
+text/WYSIWYG widget. Tested with TinyMCE_, CKEditor_ and Summernote_ (lite).
+Designed to be easily extended to use other editors.
 
 
 Quickstart
@@ -43,6 +43,27 @@ Configure ``django-richtextfield`` in ``settings.py``::
             'plugins': 'link image',
             'toolbar': 'bold italic | link image | removeformat',
             'width': 700
+        }
+    }
+
+For Summernote_::
+
+    DJRICHTEXTFIELD_CONFIG = {
+        'js': [
+            # Exposes Django admin jQuery to Summernote:
+            'djrichtextfield/expose-django-jquery.js',
+            '//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js',
+        ],
+        'css': {
+            'all': [
+                '//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css',
+            ],
+        },
+        'init_template': 'djrichtextfield/init/summernote.js',
+        'settings': {
+            'followingToolbar': False,
+            'minHeight': 250,
+            'width': 700,
         }
     }
 
@@ -99,13 +120,17 @@ This dictionary can have the following keys:
 
 ``'init_template'``
     Path to the `init template`_ for your editor. Currently
-    ``django-richtextfield`` ships with two templates, either::
+    ``django-richtextfield`` ships with three templates, either::
 
     'init_template': 'djrichtextfield/init/tinymce.js' 
 
     or::
 
     'init_template': 'djrichtextfield/init/ckeditor.js'
+
+    or::
+
+    'init_template': 'djrichtextfield/init/summernote.js'
 
 .. _conf_settings:
 
@@ -130,6 +155,14 @@ This dictionary can have the following keys:
               {'items': ['Source']}
           ],
           'format_tags': 'p;h1;h2;h3',
+          'width': 700
+      }
+
+    or::
+
+      {  # Summernote
+          'followingToolbar': False,
+          'minHeight': 250,
           'width': 700
       }
 
@@ -237,3 +270,4 @@ other "advanced" features.
 .. _Profiles: conf_profiles_
 .. _TinyMCE: http://www.tinymce.com/
 .. _CKEditor: http://ckeditor.com/
+.. _Summernote: https://summernote.org/

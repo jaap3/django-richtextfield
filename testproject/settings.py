@@ -94,4 +94,29 @@ CKEDITOR_CONFIG = {
     }
 }
 
+SUMMERNOTE_CONFIG = {
+    'js': [
+        'djrichtextfield/expose-django-jquery.js',
+        '//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js',
+    ],
+    'css': {
+        'all': [
+            '//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css',
+        ],
+    },
+    'init_template': 'djrichtextfield/init/summernote.js',
+    'settings': {
+        'followingToolbar': False,
+        'minHeight': 250,
+        'width': 700,
+    },
+    'profiles': {
+        'mini': {
+            'toolbar': (
+                ('style', ('bold', 'italic', 'clear')),
+            ),
+        }
+    }
+}
+
 DJRICHTEXTFIELD_CONFIG = CKEDITOR_CONFIG

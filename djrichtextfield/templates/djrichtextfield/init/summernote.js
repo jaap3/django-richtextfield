@@ -1,0 +1,1 @@
+$e.summernote(settings);

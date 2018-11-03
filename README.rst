@@ -79,6 +79,22 @@ This dictionary can have the following keys:
 
     'js': ['path/to/editor.js', 'path/to/plugin.js']
 
+.. _conf_css:
+
+``'css'``
+    A dictionary of CSS files required for various forms of output media.
+    These can be URLs to a CDN or paths relative to your ``STATIC_URL`` e.g.::
+
+    'css': {
+        'all': [
+            'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
+        ]
+    }
+
+    or::
+
+    'css': {'all: ['path/to/editor.css', 'path/to/plugin.css']}
+
 .. _conf_init_template:
 
 ``'init_template'``

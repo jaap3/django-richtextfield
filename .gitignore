@@ -1,4 +1,7 @@
+__pycache__
+*.pyc
 db.sqlite3
 htmlcov
 .coverage
 .tox
+*.egg-info

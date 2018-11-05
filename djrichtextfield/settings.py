@@ -6,6 +6,7 @@ from django.test.signals import setting_changed
 
 DEFAULT_CONFIG = {
     'js': [],
+    'css': {},
     'init_template': None,
     'settings': {}
 }

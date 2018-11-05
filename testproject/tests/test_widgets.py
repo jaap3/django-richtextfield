@@ -9,6 +9,9 @@ from djrichtextfield.widgets import RichTextWidget
 
 CONFIG = {
     'js': ['foo.js'],
+    'css': {
+        'all': ['bar.css'],
+    },
     'settings': {'foo': True, 'bar': [1, 2, 3]},
     'profiles': {
         'simple': {'bar': [1, 2]}
@@ -52,6 +55,12 @@ class SettingsTestCase(TestCase):
         Test that the correct javascript files are included.
         """
         self.assertTrue(set(self.config['js']).issubset(self.widget.media._js))
+
+    def test_media_css(self):
+        """
+        Test that the correct CSS files are included.
+        """
+        self.assertEqual(self.config['css'], self.widget.media._css)
 
     def test_render(self):
         """

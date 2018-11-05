@@ -1,8 +1,8 @@
 History
 -------
 
-1.3 (2018-11-05)
-^^^^^^^^^^^^^^^^
+1.3.0 (2018-11-05)
+^^^^^^^^^^^^^^^^^^
 
 * Allow CSS files to be included by a ``RichTextWidget``
 

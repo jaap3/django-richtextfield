@@ -187,16 +187,33 @@ or::
 Custom init / Using another editor
 ----------------------------------
 
-This is uncharted territory, but in theory it's fairly easy. Just configure
-``DJRICHTEXTFIELD_CONFIG`` to load the right Javascript files and create
-an `init template`_.
+It should be fairly easy to use this project with another editor.
+All that's required is to configure ``DJRICHTEXTFIELD_CONFIG`` to load the 
+right Javascript/CSS files and to create a custom `init template`_.
 
-::
+For example, to use jQuery based Summernote_ (lite) editor::
 
     DJRICHTEXTFIELD_CONFIG = {
-        'js': ['path/to/editor.js'],
-        'init_template': 'path/to/init/template.js',
-        'settings': {'some': 'configuration'}
+        'js': [
+            '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js',
+            '//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js',
+            '//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js',
+        ],
+        'css': {
+            'all': [
+                '//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css',
+                '//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css',
+            ]
+        },
+        'init_template': 'path/to/init/summernote.js',
+        'settings': {
+            'followingToolbar': False,
+            'minHeight': 250,
+            'width': 700,
+            'toolbar': [
+                ['style', ['bold', 'italic', 'clear']],
+            ],
+        }
     }
 
 Init template
@@ -204,18 +221,17 @@ Init template
 
 The init template is a Django template (so it should be in the template and
 not in the static directory). It contains a tiny bit of Javascript that's
-called to initialize each editor. For example, the init template for CKEditor
-looks like this::
+called to initialize each editor. For example, the init template for Summernote
+would like this::
 
-    if (!CKEDITOR.instances[id]) {
-        CKEDITOR.replace(id, settings);
-    }
+    $('#' + id).summernote(settings)
 
 The init template has the following Javascript variables available from the
 outer scope:
 
 ``$e``
-  jQuery wrapped textarea to be replaced
+  jQuery wrapped textarea to be replaced (using the jQuery version bundled 
+  with Django's admin)
 ``id``
   The ``id`` attribute of the textarea
 ``default_settings``
@@ -235,5 +251,6 @@ other "advanced" features.
 
 
 .. _Profiles: conf_profiles_
-.. _TinyMCE: http://www.tinymce.com/
-.. _CKEditor: http://ckeditor.com/
+.. _TinyMCE: https://www.tinymce.com/
+.. _CKEditor: https://ckeditor.com/
+.. _Summernote: https://summernote.org/

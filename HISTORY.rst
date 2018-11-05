@@ -1,22 +1,22 @@
 History
 -------
 
-1.2.5 (unreleased)
-^^^^^^^^^^^^^^^^^^
+1.3 (2018-11-05)
+^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+* Allow CSS files to be included by a ``RichTextWidget``
 
 
 1.2.4 (2018-09-25)
 ^^^^^^^^^^^^^^^^^^
 
-- Fix display issue in Django 2.1's admin interface
+* Fix display issue in Django 2.1's admin interface
 
 
 1.2.3 (2018-09-11)
 ^^^^^^^^^^^^^^^^^^
 
-- Add support for Django 2.1
+* Add support for Django 2.1
 
 
 1.2.2 (2018-06-12)

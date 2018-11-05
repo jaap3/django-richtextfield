@@ -73,11 +73,11 @@ This dictionary can have the following keys:
     A list of required javascript files. These can be URLs to a CDN or paths
     relative to your ``STATIC_URL`` e.g.::
 
-    'js': ['//cdn.ckeditor.com/4.4.4/standard/ckeditor.js']
+      'js': ['//cdn.ckeditor.com/4.4.4/standard/ckeditor.js']
 
     or::
 
-    'js': ['path/to/editor.js', 'path/to/plugin.js']
+      'js': ['path/to/editor.js', 'path/to/plugin.js']
 
 .. _conf_css:
 
@@ -85,15 +85,15 @@ This dictionary can have the following keys:
     A dictionary of CSS files required for various forms of output media.
     These can be URLs to a CDN or paths relative to your ``STATIC_URL`` e.g.::
 
-    'css': {
-        'all': [
-            'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
-        ]
-    }
+      'css': {
+          'all': [
+              'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
+          ]
+      }
 
     or::
 
-    'css': {'all: ['path/to/editor.css', 'path/to/plugin.css']}
+      'css': {'all: ['path/to/editor.css', 'path/to/plugin.css']}
 
 .. _conf_init_template:
 
@@ -101,11 +101,11 @@ This dictionary can have the following keys:
     Path to the `init template`_ for your editor. Currently
     ``django-richtextfield`` ships with two templates, either::
 
-    'init_template': 'djrichtextfield/init/tinymce.js' 
+        'init_template': 'djrichtextfield/init/tinymce.js' 
 
     or::
 
-    'init_template': 'djrichtextfield/init/ckeditor.js'
+        'init_template': 'djrichtextfield/init/ckeditor.js'
 
 .. _conf_settings:
 

@@ -93,7 +93,7 @@ This dictionary can have the following keys:
 
     or::
 
-      'css': {'all: ['path/to/editor.css', 'path/to/plugin.css']}
+      'css': {'all': ['path/to/editor.css', 'path/to/plugin.css']}
 
 .. _conf_init_template:
 
@@ -196,12 +196,10 @@ For example, to use jQuery based Summernote_ (lite) editor::
     DJRICHTEXTFIELD_CONFIG = {
         'js': [
             '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js',
-            '//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js',
             '//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js',
         ],
         'css': {
             'all': [
-                '//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css',
                 '//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css',
             ]
         },

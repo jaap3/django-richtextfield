@@ -7,4 +7,5 @@ Contributors
 ------------
 
 * Arne de Laat <arne <at> delaat.net>
+* Christine Ho
 * Sergio Livi <me <at> serl.it>

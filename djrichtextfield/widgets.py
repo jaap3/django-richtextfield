@@ -12,23 +12,24 @@ from django.utils.encoding import force_text
 from django.utils.html import format_html
 
 from djrichtextfield import settings
+from djrichtextfield.mixins import SanitizerMixin
 
 
-class RichTextWidget(Textarea):
+class RichTextWidget(SanitizerMixin, Textarea):
     CSS_CLASS = 'djrichtextfield'
     INIT_URL = 'djrichtextfield_init'
     SETTINGS_ATTR = 'data-field-settings'
     CONTAINER_CLASS = 'fieldBox' if django.VERSION >= (2, 1) else 'field-box'
     PROFILE_KEY = 'profiles'
 
-    def __init__(self, attrs=None, field_settings=None):
+    def __init__(self, attrs=None, field_settings=None, sanitizer=None):
         defaults = {'class': self.CSS_CLASS}
         if attrs:
             if 'class' in attrs:
                 attrs['class'] = ' '.join([attrs['class'], defaults['class']])
             defaults.update(attrs)
         self.field_settings = field_settings or {}
-        super(RichTextWidget, self).__init__(defaults)
+        super(RichTextWidget, self).__init__(defaults, sanitizer=sanitizer)
 
     @property
     def media(self):
@@ -65,3 +66,12 @@ class RichTextWidget(Textarea):
                                                       renderer=renderer)
         return format_html(
             '<div class="{0}">{1}</div>', self.CONTAINER_CLASS, textarea)
+
+    def value_from_datadict(self, *args, **kwargs):
+        """
+        Pass the submitted value through the sanitizer before returning it.
+        """
+        value = super(RichTextWidget, self).value_from_datadict(*args,
+                                                                **kwargs)
+        sanitizer = self.get_sanitizer()
+        return sanitizer(value)

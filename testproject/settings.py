@@ -92,6 +92,10 @@ CKEDITOR_CONFIG = {
                 {'items': ['Bold', 'Italic', '-', 'RemoveFormat']},
             ]
         }
+    },
+    'sanitizer': lambda value: 'foo' + value,
+    'sanitizer_profiles': {
+        'baz': lambda value: value + 'baz'
     }
 }
 

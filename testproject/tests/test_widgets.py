@@ -1,4 +1,3 @@
-import django
 import json
 
 from django.test import TestCase

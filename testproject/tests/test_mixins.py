@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.test.utils import override_settings
+from django.utils.text import slugify
 
 from djrichtextfield import settings
 from djrichtextfield.mixins import pass_value, SanitizerMixin
@@ -45,6 +46,15 @@ class TestSanitizerMixin(TestCase):
         """
         mixin = SanitizerMixin()
         self.assertEqual(pass_value, mixin.get_sanitizer())
+
+    def test_import_string(self):
+        """
+        Passing a function path causes it to be imported
+        """
+        mixin = SanitizerMixin(sanitizer='django.utils.text.slugify')
+        sanitizer = mixin.get_sanitizer()
+        self.assertEqual('django.utils.text', sanitizer.__module__)
+        self.assertEqual('slugify', sanitizer.__name__)
 
 
 class TestPassValue(TestCase):

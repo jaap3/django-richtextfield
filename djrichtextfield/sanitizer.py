@@ -19,8 +19,9 @@ class SanitizerMixin(object):
     SANITIZER_KEY = 'sanitizer'
     SANITIZER_PROFILES_KEY = 'sanitizer_profiles'
 
-    def __init__(self, *args, sanitizer=None, **kwargs):
-        self.sanitizer = sanitizer
+    def __init__(self, *args, **kwargs):
+        # Python 2 does not allow keywords between *args and **kwargs
+        self.sanitizer = kwargs.pop('sanitizer', None)
         super(SanitizerMixin, self).__init__(*args, **kwargs)
 
     def get_sanitizer(self):

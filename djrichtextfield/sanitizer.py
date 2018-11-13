@@ -38,14 +38,14 @@ class SanitizerMixin(object):
         sanitizer = self.sanitizer
 
         if not sanitizer:
+            default_sanitizer = settings.CONFIG.get(self.SANITIZER_KEY)
             field_settings = getattr(self, 'field_settings', None)
             if isinstance(field_settings, six.string_types):
                 profiles = settings.CONFIG.get(self.SANITIZER_PROFILES_KEY, {})
-                sanitizer = profiles.get(field_settings)
-
-        if not sanitizer:
-            sanitizer = settings.CONFIG.get(self.SANITIZER_KEY)
-
+                sanitizer = profiles.get(field_settings, default_sanitizer)
+            else:
+                sanitizer = default_sanitizer
+                
         if isinstance(sanitizer, six.string_types):
             sanitizer = import_string(sanitizer)
 

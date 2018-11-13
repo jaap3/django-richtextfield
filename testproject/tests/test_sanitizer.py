@@ -1,9 +1,8 @@
 from django.test import TestCase
 from django.test.utils import override_settings
-from django.utils.text import slugify
 
 from djrichtextfield import settings
-from djrichtextfield.mixins import pass_value, SanitizerMixin
+from djrichtextfield.sanitizer import noop, SanitizerMixin
 
 
 class TestSanitizerMixin(TestCase):
@@ -21,8 +20,9 @@ class TestSanitizerMixin(TestCase):
         """
         mixin = SanitizerMixin()
         mixin.field_settings = 'baz'
-        self.assertEqual(settings.CONFIG['sanitizer_profiles']['baz'],
-                         mixin.get_sanitizer())
+        self.assertEqual(
+            settings.CONFIG['sanitizer_profiles']['baz'],
+            mixin.get_sanitizer())
 
     def test_clean_uses_global_sanitizer_with_no_sanitizer_profiles(self):
         """
@@ -45,7 +45,7 @@ class TestSanitizerMixin(TestCase):
         No configured sanitizers causes noop to be used
         """
         mixin = SanitizerMixin()
-        self.assertEqual(pass_value, mixin.get_sanitizer())
+        self.assertEqual(noop, mixin.get_sanitizer())
 
     def test_import_string(self):
         """
@@ -57,10 +57,10 @@ class TestSanitizerMixin(TestCase):
         self.assertEqual('slugify', sanitizer.__name__)
 
 
-class TestPassValue(TestCase):
+class TestNoop(TestCase):
     def test_object_in_is_out(self):
-        input = object()
-        self.assertEqual(input, pass_value(input))
+        value = object()
+        self.assertEqual(value, noop(value))
 
     def test_str_in_is_out(self):
-        self.assertEqual('foo', pass_value('foo'))
+        self.assertEqual('foo', noop('foo'))

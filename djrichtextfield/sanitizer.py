@@ -6,7 +6,7 @@ from django.utils.module_loading import import_string
 from djrichtextfield import settings
 
 
-def pass_value(value):
+def noop(value):
     return value
 
 
@@ -19,8 +19,8 @@ class SanitizerMixin(object):
     SANITIZER_KEY = 'sanitizer'
     SANITIZER_PROFILES_KEY = 'sanitizer_profiles'
 
-    def __init__(self, *args, **kwargs):
-        self.sanitizer = kwargs.pop('sanitizer', None)
+    def __init__(self, *args, sanitizer=None, **kwargs):
+        self.sanitizer = sanitizer
         super(SanitizerMixin, self).__init__(*args, **kwargs)
 
     def get_sanitizer(self):
@@ -43,7 +43,7 @@ class SanitizerMixin(object):
             sanitizer = profiles.get(self.field_settings)
 
         if not sanitizer:
-            sanitizer = settings.CONFIG.get(self.SANITIZER_KEY, pass_value)
+            sanitizer = settings.CONFIG.get(self.SANITIZER_KEY, noop)
 
         if isinstance(sanitizer, six.string_types):
             sanitizer = import_string(sanitizer)

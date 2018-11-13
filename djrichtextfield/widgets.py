@@ -12,7 +12,7 @@ from django.utils.encoding import force_text
 from django.utils.html import format_html
 
 from djrichtextfield import settings
-from djrichtextfield.mixins import SanitizerMixin
+from djrichtextfield.sanitizer import SanitizerMixin
 
 
 class RichTextWidget(SanitizerMixin, Textarea):
@@ -71,7 +71,7 @@ class RichTextWidget(SanitizerMixin, Textarea):
         """
         Pass the submitted value through the sanitizer before returning it.
         """
-        value = super(RichTextWidget, self).value_from_datadict(*args,
-                                                                **kwargs)
+        value = super(RichTextWidget, self).value_from_datadict(
+            *args, **kwargs)
         sanitizer = self.get_sanitizer()
         return sanitizer(value)

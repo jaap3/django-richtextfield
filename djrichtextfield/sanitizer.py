@@ -34,18 +34,18 @@ class SanitizerMixin(object):
         - Simple no-op sanitizer which just returns the provided value.
 
         """
-        sanitizer = None
-        if self.sanitizer:
-            sanitizer = self.sanitizer
-        elif (hasattr(self, 'field_settings')
-              and isinstance(self.field_settings, six.string_types)):
-            profiles = settings.CONFIG.get(self.SANITIZER_PROFILES_KEY, {})
-            sanitizer = profiles.get(self.field_settings)
+        sanitizer = self.sanitizer
 
         if not sanitizer:
-            sanitizer = settings.CONFIG.get(self.SANITIZER_KEY, noop)
+            field_settings = getattr(self, 'field_settings', None)
+            if isinstance(field_settings, six.string_types):
+                profiles = settings.CONFIG.get(self.SANITIZER_PROFILES_KEY, {})
+                sanitizer = profiles.get(field_settings)
+
+        if not sanitizer:
+            sanitizer = settings.CONFIG.get(self.SANITIZER_KEY)
 
         if isinstance(sanitizer, six.string_types):
             sanitizer = import_string(sanitizer)
 
-        return sanitizer
+        return sanitizer or noop

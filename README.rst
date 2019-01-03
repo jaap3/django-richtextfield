@@ -113,7 +113,7 @@ This dictionary can have the following keys:
     A Python dictionary with the **default** configuration data for your
     editor e.g.::
 
-      {  # TinyMCE
+      'settings': {  # TinyMCE
           'menubar': False, 
           'plugins': 'link image',
           'toolbar': 'bold italic | link image | removeformat',
@@ -122,7 +122,7 @@ This dictionary can have the following keys:
 
     or::
 
-      {  # CKEditor
+      'settings': {  # CKEditor
           'toolbar': [
               {'items': ['Format', '-', 'Bold', 'Italic', '-',
                          'RemoveFormat']},

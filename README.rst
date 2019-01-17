@@ -113,7 +113,7 @@ This dictionary can have the following keys:
     A Python dictionary with the **default** configuration data for your
     editor e.g.::
 
-      {  # TinyMCE
+      'settings': {  # TinyMCE
           'menubar': False, 
           'plugins': 'link image',
           'toolbar': 'bold italic | link image | removeformat',
@@ -122,7 +122,7 @@ This dictionary can have the following keys:
 
     or::
 
-      {  # CKEditor
+      'settings': {  # CKEditor
           'toolbar': [
               {'items': ['Format', '-', 'Bold', 'Italic', '-',
                          'RemoveFormat']},
@@ -155,6 +155,33 @@ This dictionary can have the following keys:
             `field & widget settings`_. This means that 
             profile settings are merged with the defaults!
 
+.. _conf_sanitizer:
+
+``'sanitizer'``
+    This is an **optional** configuration key. A sanitizer can be used to
+    process submitted values before it is returned by the widget. By default no
+    processing is performed on submitted values. You can configure a sanitizer
+    either by providing a function or an importable path to a function, like
+    so::
+  
+      'sanitizer': lambda value: '<h1>Title</h1>' + value
+  
+    or::
+  
+      'sanitizer': 'bleach.clean'
+
+.. _conf_sanitizer_profiles:
+
+``'sanitizer_profiles'``
+    This is an **optional** configuration key. It is possible to override
+    the default or configured sanitizer for each of the configured `profiles`_.
+    For example to set a custom sanitizer for the ``advanced`` profile::
+    
+      'sanitizer_profiles': {
+          'advanced': lambda value: value + 'This text has been sanitized.'
+      }
+    
+
 Field & Widget settings
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -167,7 +194,10 @@ You can override the default settings per field::
 or::
 
     class Post(models.Model):
-        content = RichTextField(field_settings={'your': 'custom', 'settings': True})
+        content = RichTextField(
+            field_settings={'your': 'custom', 'settings': True},
+            sanitizer='bleach.linkify'
+        )
 
 It's recommended to use `profiles`_, they make it easier to switch configs
 or even editors on a later date. You use a profile like this::

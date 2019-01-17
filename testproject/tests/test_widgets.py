@@ -1,4 +1,3 @@
-import django
 import json
 
 from django.test import TestCase
@@ -40,6 +39,22 @@ class TestRichTextWidget(TestCase):
         widget = RichTextWidget({'class': 'somethingelse'})
         self.assertEqual(
             widget.attrs['class'], 'somethingelse djrichtextfield')
+
+    def test_value_from_datadict_sanitzes_value(self):
+        """
+        Value returned by value_from_datadict is sanitized
+        """
+        widget = RichTextWidget()
+        self.assertEqual(
+            'foobar', widget.value_from_datadict({'baz': 'bar'}, {}, 'baz'))
+
+    def test_init_sanitizer_is_used_by_value_from_datadict(self):
+        """
+        Sanitizer passed on widget initialisation is used
+        """
+        widget = RichTextWidget(sanitizer=lambda value: value + 'baz')
+        self.assertEqual(
+            'barbaz', widget.value_from_datadict({'baz': 'bar'}, {}, 'baz'))
 
 
 @override_settings(DJRICHTEXTFIELD_CONFIG=CONFIG)

@@ -58,5 +58,5 @@ class TestRichTextField(TestCase):
         field = RichTextField(blank=True, null=True)
         try:
             field.clean(None, None)
-        except Exception as e:
-            raise AssertionError('Expected no errors') from e
+        except Exception:
+            raise AssertionError('Expected no errors')

@@ -73,5 +73,6 @@ class RichTextWidget(SanitizerMixin, Textarea):
         """
         value = super(RichTextWidget, self).value_from_datadict(
             *args, **kwargs)
-        sanitizer = self.get_sanitizer()
-        return sanitizer(value)
+        if value is not None:
+            value = self.get_sanitizer()(value)
+        return value

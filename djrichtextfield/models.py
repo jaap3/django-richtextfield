@@ -24,7 +24,8 @@ class RichTextField(SanitizerMixin, models.TextField):
         correct value if no error is raised.
         """
         value = self.to_python(value)
-        value = self.get_sanitizer()(value)
+        if value is not None:
+            value = self.get_sanitizer()(value)
         self.validate(value, model_instance)
         self.run_validators(value)
         return value

@@ -45,7 +45,7 @@ class SanitizerMixin(object):
                 sanitizer = profiles.get(field_settings, default_sanitizer)
             else:
                 sanitizer = default_sanitizer
-                
+
         if isinstance(sanitizer, six.string_types):
             sanitizer = import_string(sanitizer)
 

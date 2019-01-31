@@ -50,3 +50,13 @@ class TestRichTextField(TestCase):
         # No error if field is allowed to be blank
         field = RichTextField(blank=True, sanitizer=empty_string)
         field.clean('fancy text', None)
+
+    def test_sanitizer_handles_none(self):
+        """
+        value_from_datadict doesn't sanitize None values
+        """
+        field = RichTextField(blank=True, null=True)
+        try:
+            field.clean(None, None)
+        except Exception as e:
+            raise AssertionError('Expected no errors') from e

@@ -1,10 +1,10 @@
 History
 -------
 
-1.3.1 (unreleased)
+1.4.0 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+* Add support for pluggable server side content sanitizers
 
 
 1.3.0 (2018-11-05)

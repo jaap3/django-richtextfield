@@ -13,8 +13,14 @@ Django Rich Text Field
     :target: https://coveralls.io/r/jaap3/django-richtextfield?branch=master
 
 A Django model field and widget that renders a customizable rich
-text/WYSIWYG widget. Tested with TinyMCE_ and CKEditor_. Designed to be
-easily extended to use other editors.
+text/WYSIWYG widget.
+
+Supports global `editor settings`_, reusable `editor profiles`_
+and per `field & widget settings`_. There's built-in support for
+pluggable server side `content sanitizers`_.
+
+Tested with TinyMCE_ and CKEditor_. Designed to be easily extended to
+use other editors.
 
 
 Quickstart
@@ -69,6 +75,9 @@ This dictionary can have the following keys:
 
 .. _conf_js:
 
+Javascript souce(s)
+^^^^^^^^^^^^^^^^^^^
+
 ``'js'``
     A list of required javascript files. These can be URLs to a CDN or paths
     relative to your ``STATIC_URL`` e.g.::
@@ -80,6 +89,9 @@ This dictionary can have the following keys:
       'js': ['path/to/editor.js', 'path/to/plugin.js']
 
 .. _conf_css:
+
+CSS souce(s)
+^^^^^^^^^^^^
 
 ``'css'``
     A dictionary of CSS files required for various forms of output media.
@@ -95,13 +107,17 @@ This dictionary can have the following keys:
 
       'css': {'all': ['path/to/editor.css', 'path/to/plugin.css']}
 
+
 .. _conf_init_template:
+
+Editor init template
+^^^^^^^^^^^^^^^^^^^^
 
 ``'init_template'``
     Path to the `init template`_ for your editor. Currently
     ``django-richtextfield`` ships with two templates, either::
 
-        'init_template': 'djrichtextfield/init/tinymce.js' 
+        'init_template': 'djrichtextfield/init/tinymce.js'
 
     or::
 
@@ -109,12 +125,15 @@ This dictionary can have the following keys:
 
 .. _conf_settings:
 
+Editor settings
+^^^^^^^^^^^^^^^
+
 ``'settings'``
     A Python dictionary with the **default** configuration data for your
     editor e.g.::
 
       'settings': {  # TinyMCE
-          'menubar': False, 
+          'menubar': False,
           'plugins': 'link image',
           'toolbar': 'bold italic | link image | removeformat',
           'width': 700
@@ -135,6 +154,9 @@ This dictionary can have the following keys:
 
 .. _conf_profiles:
 
+Editor profiles
+^^^^^^^^^^^^^^^
+
 ``'profiles'``
   This is an **optional** configuration key. Profiles are "named" custom
   settings used to configure specific type of fields. You can configure
@@ -150,12 +172,15 @@ This dictionary can have the following keys:
                        ' link unlink image table | code'
         }
     }
-  
+
   .. note:: A profile is treated the same way as directly defined
-            `field & widget settings`_. This means that 
+            `field & widget settings`_. This means that
             profile settings are merged with the defaults!
 
 .. _conf_sanitizer:
+
+Content sanitizers
+^^^^^^^^^^^^^^^^^^
 
 ``'sanitizer'``
     This is an **optional** configuration key. A sanitizer can be used to
@@ -163,11 +188,11 @@ This dictionary can have the following keys:
     processing is performed on submitted values. You can configure a sanitizer
     either by providing a function or an importable path to a function, like
     so::
-  
+
       'sanitizer': lambda value: '<h1>Title</h1>' + value
-  
+
     or::
-  
+
       'sanitizer': 'bleach.clean'
 
 .. _conf_sanitizer_profiles:
@@ -176,14 +201,14 @@ This dictionary can have the following keys:
     This is an **optional** configuration key. It is possible to override
     the default or configured sanitizer for each of the configured `profiles`_.
     For example to set a custom sanitizer for the ``advanced`` profile::
-    
+
       'sanitizer_profiles': {
           'advanced': lambda value: value + 'This text has been sanitized.'
       }
-    
+
 
 Field & Widget settings
-^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------
 
 You can override the default settings per field::
 
@@ -218,7 +243,7 @@ Custom init / Using another editor
 ----------------------------------
 
 It should be fairly easy to use this project with another editor.
-All that's required is to configure ``DJRICHTEXTFIELD_CONFIG`` to load the 
+All that's required is to configure ``DJRICHTEXTFIELD_CONFIG`` to load the
 right Javascript/CSS files and to create a custom `init template`_.
 
 For example, to use jQuery based Summernote_ (lite) editor::
@@ -258,7 +283,7 @@ The init template has the following Javascript variables available from the
 outer scope:
 
 ``$e``
-  jQuery wrapped textarea to be replaced (using the jQuery version bundled 
+  jQuery wrapped textarea to be replaced (using the jQuery version bundled
   with Django's admin)
 ``id``
   The ``id`` attribute of the textarea

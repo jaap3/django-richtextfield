@@ -1,13 +1,8 @@
-from __future__ import unicode_literals
-
 import json
-
-import django
 
 from django.conf import settings as django_settings
 from django.forms.widgets import Media, Textarea
 from django.urls import reverse
-from django.utils import six
 from django.utils.encoding import force_text
 from django.utils.html import format_html
 
@@ -19,7 +14,7 @@ class RichTextWidget(SanitizerMixin, Textarea):
     CSS_CLASS = 'djrichtextfield'
     INIT_URL = 'djrichtextfield_init'
     SETTINGS_ATTR = 'data-field-settings'
-    CONTAINER_CLASS = 'fieldBox' if django.VERSION >= (2, 1) else 'field-box'
+    CONTAINER_CLASS = 'fieldBox'
     PROFILE_KEY = 'profiles'
 
     def __init__(self, attrs=None, field_settings=None, sanitizer=None):
@@ -49,7 +44,7 @@ class RichTextWidget(SanitizerMixin, Textarea):
         """
         field_settings = None
         if self.field_settings:
-            if isinstance(self.field_settings, six.string_types):
+            if isinstance(self.field_settings, str):
                 profiles = settings.CONFIG.get(self.PROFILE_KEY, {})
                 field_settings = profiles.get(self.field_settings)
             else:

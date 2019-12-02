@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import models
 
 from djrichtextfield.sanitizer import SanitizerMixin
@@ -7,9 +5,8 @@ from djrichtextfield.widgets import RichTextWidget
 
 
 class RichTextField(SanitizerMixin, models.TextField):
-    def __init__(self, *args, **kwargs):
-        # Python 2 does not allow keywords between *args and **kwargs
-        self.field_settings = kwargs.pop('field_settings', None)
+    def __init__(self, *args, field_settings=None, **kwargs):
+        self.field_settings = field_settings
         super(RichTextField, self).__init__(*args, **kwargs)
 
     def formfield(self, **kwargs):

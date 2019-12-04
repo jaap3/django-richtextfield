@@ -1,7 +1,7 @@
 History
 -------
 
-1.5.0 (unreleased)
+1.5.0 (2019-12-04)
 ^^^^^^^^^^^^^^^^^^
 
 * Drop support for Python 2

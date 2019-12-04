@@ -4,14 +4,15 @@ History
 1.5.0 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Drop support for Python 2
-- Drop support for Django < 2.2
-- Add support for Django 3.0
+* Drop support for Python 2
+* Drop support for Django < 2.2
+* Add support for Django 3.0
 
 
 1.4.0 (2019-01-31)
 ^^^^^^^^^^^^^^^^^^
 
+* NOTE: This is the final release that supports Python 2!
 * Add support for plugable server side content sanitizers
 
 

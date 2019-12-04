@@ -32,7 +32,8 @@ setup(
     ],
     include_package_data=True,
     install_requires=[],
-    license="MIT",
+    python_requires='>=3.6'
+    license='MIT',
     zip_safe=False,
     keywords='django-richtextfield, djrichtextfield django wywiwyg field',
     classifiers=[

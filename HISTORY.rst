@@ -1,7 +1,7 @@
 History
 -------
 
-1.6 (unreleased)
+1.6 (2020-05-20)
 ^^^^^^^^^^^^^^^^^^
 
 * init.js no longer depends on jQuery.

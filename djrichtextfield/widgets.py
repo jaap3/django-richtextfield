@@ -28,11 +28,7 @@ class RichTextWidget(SanitizerMixin, Textarea):
 
     @property
     def media(self):
-        extra = '' if django_settings.DEBUG else '.min'
-        js = [
-            'admin/js/vendor/jquery/jquery%s.js' % extra,
-            'admin/js/jquery.init.js'
-        ]
+        js = []
         js.extend(settings.CONFIG['js'])
         js.append(reverse(self.INIT_URL))
         return Media(js=js, css=settings.CONFIG['css'])

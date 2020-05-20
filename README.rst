@@ -15,6 +15,8 @@ Django Rich Text Field
 A Django model field and widget that renders a customizable rich
 text/WYSIWYG widget.
 
+Works in Django's admin interface and "normal" forms.
+
 Supports global `editor settings`_, reusable `editor profiles`_
 and per `field & widget settings`_. There's built-in support for
 pluggable server side `content sanitizers`_.
@@ -66,6 +68,15 @@ or forms::
     class CommentForm(forms.ModelForm):
         content = forms.CharField(widget=RichTextWidget())
 
+
+When using the editor outside of the admin make sure to include
+``form.media`` in the ``<head>`` of the template::
+
+    <head>
+      ...
+      {{ form.media }}
+      ...
+    </head>
 
 Configuration
 -------------
@@ -282,9 +293,8 @@ would like this::
 The init template has the following Javascript variables available from the
 outer scope:
 
-``$e``
-  jQuery wrapped textarea to be replaced (using the jQuery version bundled
-  with Django's admin)
+``field``
+  DOM node of the textarea to be replaced
 ``id``
   The ``id`` attribute of the textarea
 ``default_settings``

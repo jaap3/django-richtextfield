@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ post.title }}</title>
+  </head>
+  <body>
+    <article>
+      <h1>{{ post.title }}</h1>
+
+      <div>{{ post.lead|safe }}</div>
+
+      <hr>
+
+      <div>{{ post.content|safe }}</div>
+    </article>
+
+    <aside>
+      <h2>Comments</h2>
+
+      <ul>
+      {% for comment in post.comment_set.all %}
+        <li id="c{{ comment.pk }}">
+          {{ comment.content|safe }}
+        </li>
+      {% empty %}
+        <li>
+          <p>No comments yet</p>
+        </li>
+      {% endfor %}
+      </ul>
+
+      <p><a href="{{ post.get_add_comment_url }}">Add a comment</a></p>
+    </aside>
+  </body>
+</html>

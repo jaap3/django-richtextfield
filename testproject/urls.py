@@ -1,9 +1,14 @@
-from django.conf.urls import include, url
+from django.urls import include, path
 from django.contrib import admin
+
+from .testapp.views import CommentCreateView, PostDetail
+
 
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^djrichtextfield/', include('djrichtextfield.urls'))
+    path('admin/', admin.site.urls),
+    path('djrichtextfield/', include('djrichtextfield.urls')),
+    path('post/<int:pk>/', PostDetail.as_view(), name='post_detail'),
+    path('post/<int:pk>/comment/', CommentCreateView.as_view(), name='post_add_comment')
 ]

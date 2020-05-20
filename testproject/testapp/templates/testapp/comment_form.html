@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Comment on {{ post.title }}</title>
+    {{ form.media }}
+  </head>
+  <body>
+    <article>
+      <h1>Comment on {{ post.title }}</h1>
+
+      <form method="post">
+        <div>{% csrf_token %}</div>
+        {{ form.as_p }}
+
+        <p><input type="submit" value="Comment"></p>
+      </form>
+    </article>
+  </body>
+</html>

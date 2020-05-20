@@ -1,7 +1,7 @@
-from django.conf.urls import url
+from django.urls import path
 
 from djrichtextfield.views import InitView
 
 urlpatterns = [
-    url('^init.js$', InitView.as_view(), name='djrichtextfield_init')
+    path('init.js', InitView.as_view(), name='djrichtextfield_init')
 ]

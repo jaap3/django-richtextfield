@@ -1,11 +1,21 @@
 History
 -------
 
-1.5.1 (unreleased)
+1.6 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+* init.js no longer depends on jQuery.
+  This might a backwards incompatible change for:
 
+  - Users that have defined their own init script that dependeds on
+    the ``$e`` var. This var has been replaced by ``field`` which is
+    a plain DOM node instead of a jQuery object.
+  - Users that depended on the implicit load of Django's bundled
+    version of jQuery now have explicitly load it themselves.
+
+* Verified TinyMCE init/config works with TinyMCE 4 and 5
+
+* Tested and verified to work with Django 3.1
 
 1.5.0 (2019-12-04)
 ^^^^^^^^^^^^^^^^^^

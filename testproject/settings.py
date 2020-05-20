@@ -57,7 +57,7 @@ STATIC_URL = '/static/'
 
 # Django Rich Text Field
 TINYMCE_CONFIG = {
-    'js': ['//tinymce.cachefly.net/4.1/tinymce.min.js'],
+    'js': ['//cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'],
     'init_template': 'djrichtextfield/init/tinymce.js',
     'settings': {
         'menubar': False,
@@ -75,7 +75,7 @@ TINYMCE_CONFIG = {
 }
 
 CKEDITOR_CONFIG = {
-    'js': ['//cdn.ckeditor.com/4.4.4/standard/ckeditor.js'],
+    'js': ['//cdn.ckeditor.com/4.14.0/standard/ckeditor.js'],
     'init_template': 'djrichtextfield/init/ckeditor.js',
     'settings': {
         'toolbar': [

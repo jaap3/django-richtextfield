@@ -42,7 +42,7 @@ Add the urls to the project's urlpatterns::
 Configure ``django-richtextfield`` in ``settings.py``::
 
     DJRICHTEXTFIELD_CONFIG = {
-        'js': ['//tinymce.cachefly.net/4.1/tinymce.min.js'],
+        'js': ['//cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'],
         'init_template': 'djrichtextfield/init/tinymce.js',
         'settings': {
             'menubar': False,
@@ -82,7 +82,7 @@ Javascript souce(s)
     A list of required javascript files. These can be URLs to a CDN or paths
     relative to your ``STATIC_URL`` e.g.::
 
-      'js': ['//cdn.ckeditor.com/4.4.4/standard/ckeditor.js']
+      'js': ['//cdn.ckeditor.com/4.14.0/standard/ckeditor.js']
 
     or::
 
@@ -94,12 +94,12 @@ CSS souce(s)
 ^^^^^^^^^^^^
 
 ``'css'``
-    A dictionary of CSS files required for various forms of output media.
+    A dictionary of CSS files required.
     These can be URLs to a CDN or paths relative to your ``STATIC_URL`` e.g.::
 
       'css': {
           'all': [
-              'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
+              'https://cdn.example.com/css/editor.css'
           ]
       }
 

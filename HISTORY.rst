@@ -4,7 +4,7 @@ History
 1.6.1 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Support Django 3.2 (no changes necessary)
 
 
 1.6 (2020-05-20)

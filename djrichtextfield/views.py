@@ -1,6 +1,6 @@
 import json
 
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.safestring import mark_safe
 from django.views.generic import TemplateView
 
@@ -12,8 +12,7 @@ class InitView(TemplateView):
     content_type = 'application/javascript'
 
     def get_settings_json(self):
-        return mark_safe(json.dumps(settings.CONFIG['settings'],
-                                    default=force_text))
+        return mark_safe(json.dumps(settings.CONFIG['settings'], default=force_str))
 
     def get_context_data(self, **kwargs):
         context_data = super(InitView, self).get_context_data(**kwargs)

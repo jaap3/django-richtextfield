@@ -11,14 +11,16 @@ class RichTextField(SanitizerMixin, models.TextField):
 
     def formfield(self, **kwargs):
         kwargs['widget'] = RichTextWidget(
-            field_settings=self.field_settings, sanitizer=self.sanitizer)
+            field_settings=self.field_settings, sanitizer=self.sanitizer
+        )
         return super(RichTextField, self).formfield(**kwargs)
 
     def clean(self, value, model_instance):
         """
-        Convert the value's type, sanitize it, and run validation. Validation
-        errors from to_python() and validate() are propagated. Return the
-        correct value if no error is raised.
+        Convert the value's type, sanitize it, and run validation.
+        Validation errors from to_python() and validate() are propagated.
+
+        Return the correct value if no error is raised.
         """
         value = self.to_python(value)
         if value is not None:

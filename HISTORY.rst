@@ -5,6 +5,9 @@ History
 ^^^^^^^^^^^^^^^^^^
 
 - Support Django 3.2 (no changes necessary)
+- Test with Django main (4.0)
+- Use force_str instead of force_text,
+  the latter is deprecated and removed in Django 4.0
 
 
 1.6 (2020-05-20)

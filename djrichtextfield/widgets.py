@@ -3,7 +3,7 @@ import json
 from django.conf import settings as django_settings
 from django.forms.widgets import Media, Textarea
 from django.urls import reverse
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.html import format_html
 
 from djrichtextfield import settings
@@ -52,7 +52,7 @@ class RichTextWidget(SanitizerMixin, Textarea):
         field_settings = self.get_field_settings()
         if field_settings:
             attrs[self.SETTINGS_ATTR] = json.dumps(field_settings,
-                                                   default=force_text)
+                                                   default=force_str)
         textarea = super(RichTextWidget, self).render(name, value, attrs=attrs,
                                                       renderer=renderer)
         return format_html(

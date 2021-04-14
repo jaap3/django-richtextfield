@@ -1,7 +1,7 @@
 History
 -------
 
-1.6.1 (unreleased)
+1.6.1 (2021-04-14)
 ^^^^^^^^^^^^^^^^^^
 
 - Support Django 3.2 (no changes necessary)

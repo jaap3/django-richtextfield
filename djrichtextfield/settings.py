@@ -6,7 +6,7 @@ DEFAULT_CONFIG = {
     'js': [],
     'css': {},
     'init_template': None,
-    'settings': {}
+    'settings': {},
 }
 CONFIG = DEFAULT_CONFIG.copy()
 CONFIG.update(getattr(settings, 'DJRICHTEXTFIELD_CONFIG', {}))

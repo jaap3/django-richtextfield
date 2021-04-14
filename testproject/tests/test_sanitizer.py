@@ -20,9 +20,7 @@ class TestSanitizerMixin(TestCase):
         """
         mixin = SanitizerMixin()
         mixin.field_settings = 'baz'
-        self.assertEqual(
-            settings.CONFIG['sanitizer_profiles']['baz'],
-            mixin.get_sanitizer())
+        self.assertEqual(settings.CONFIG['sanitizer_profiles']['baz'], mixin.get_sanitizer())
 
     def test_clean_uses_global_sanitizer_with_no_sanitizer_profiles(self):
         """

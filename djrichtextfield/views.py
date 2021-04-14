@@ -12,8 +12,7 @@ class InitView(TemplateView):
     content_type = 'application/javascript'
 
     def get_settings_json(self):
-        return mark_safe(json.dumps(settings.CONFIG['settings'],
-                                    default=force_str))
+        return mark_safe(json.dumps(settings.CONFIG['settings'], default=force_str))
 
     def get_context_data(self, **kwargs):
         context_data = super(InitView, self).get_context_data(**kwargs)

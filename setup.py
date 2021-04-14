@@ -18,8 +18,7 @@ history = open('HISTORY.rst').read()
 setup(
     name='django-richtextfield',
     version=version,
-    description='A Django model field and widget that renders a'
-                ' customizable WYSIWYG/rich text editor',
+    description='A Django model field and widget that renders a customizable WYSIWYG/rich text editor',
     long_description=readme + '\n\n' + history,
     author='Jaap Roes',
     author_email='jaap.roes@gmail.com',

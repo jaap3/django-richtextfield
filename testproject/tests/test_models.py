@@ -14,14 +14,16 @@ class TestRichTextField(TestCase):
         """
         Model field has RichTextWidget
         """
-        self.assertIsInstance(
-            RichTextField().formfield().widget, RichTextWidget)
+        self.assertIsInstance(RichTextField().formfield().widget, RichTextWidget)
 
     def test_formfield_widget_passes_settings(self):
         """
         Model field passes setting to widget
         """
-        settings = {'foo': True, 'bar': [1, 2, 3]}
+        settings = {
+            'foo': True,
+            'bar': [1, 2, 3],
+        }
         widget = RichTextField(field_settings=settings).formfield().widget
         self.assertEqual(widget.field_settings, settings)
 

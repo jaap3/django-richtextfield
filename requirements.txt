@@ -1,6 +1,5 @@
 Django
 wheel
 coverage
-coveralls
 flake8
 tox

@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.test.utils import override_settings
 
 from djrichtextfield import settings
-from djrichtextfield.sanitizer import noop, SanitizerMixin
+from djrichtextfield.sanitizer import SanitizerMixin, noop
 
 
 class TestSanitizerMixin(TestCase):

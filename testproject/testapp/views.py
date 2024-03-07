@@ -14,5 +14,5 @@ class CommentCreateView(UpdateView):
     form_class = CommentForm
 
     def get_object(self):
-        post = get_object_or_404(Post, pk=self.kwargs['pk'])
+        post = get_object_or_404(Post, pk=self.kwargs["pk"])
         return Comment(post=post)

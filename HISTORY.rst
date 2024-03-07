@@ -4,8 +4,11 @@ History
 1.6.2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
-
+- Code refresh, no functional changes
+- Switch CI to GitHub actions
+- Test with Django 3.2 and 4.2
+- Test with Python 3.8, 3.10 and 3.12
+- Drop support for older Python and Django versions
 
 1.6.1 (2021-04-14)
 ^^^^^^^^^^^^^^^^^^

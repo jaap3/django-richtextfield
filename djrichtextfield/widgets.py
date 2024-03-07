@@ -10,20 +10,22 @@ from djrichtextfield.sanitizer import SanitizerMixin
 
 
 class RichTextWidget(SanitizerMixin, Textarea):
-    CSS_CLASS = 'djrichtextfield'
-    INIT_URL = 'djrichtextfield_init'
-    SETTINGS_ATTR = 'data-field-settings'
-    CONTAINER_CLASS = 'fieldBox'
-    PROFILE_KEY = 'profiles'
+    CSS_CLASS = "djrichtextfield"
+    INIT_URL = "djrichtextfield_init"
+    SETTINGS_ATTR = "data-field-settings"
+    CONTAINER_CLASS = "fieldBox"
+    PROFILE_KEY = "profiles"
 
     def __init__(self, attrs=None, field_settings=None, sanitizer=None):
-        defaults = {'class': self.CSS_CLASS}
+        defaults = {"class": self.CSS_CLASS}
         if attrs:
-            if 'class' in attrs:
-                attrs['class'] = ' '.join([
-                    attrs['class'],
-                    defaults['class'],
-                ])
+            if "class" in attrs:
+                attrs["class"] = " ".join(
+                    [
+                        attrs["class"],
+                        defaults["class"],
+                    ]
+                )
             defaults.update(attrs)
         self.field_settings = field_settings or {}
         super(RichTextWidget, self).__init__(defaults, sanitizer=sanitizer)
@@ -31,9 +33,9 @@ class RichTextWidget(SanitizerMixin, Textarea):
     @property
     def media(self):
         js = []
-        js.extend(settings.CONFIG['js'])
+        js.extend(settings.CONFIG["js"])
         js.append(reverse(self.INIT_URL))
-        return Media(js=js, css=settings.CONFIG['css'])
+        return Media(js=js, css=settings.CONFIG["css"])
 
     def get_field_settings(self):
         """
@@ -54,7 +56,9 @@ class RichTextWidget(SanitizerMixin, Textarea):
         field_settings = self.get_field_settings()
         if field_settings:
             attrs[self.SETTINGS_ATTR] = json.dumps(field_settings, default=force_str)
-        textarea = super(RichTextWidget, self).render(name, value, attrs=attrs, renderer=renderer)
+        textarea = super(RichTextWidget, self).render(
+            name, value, attrs=attrs, renderer=renderer
+        )
         return format_html('<div class="{0}">{1}</div>', self.CONTAINER_CLASS, textarea)
 
     def value_from_datadict(self, *args, **kwargs):

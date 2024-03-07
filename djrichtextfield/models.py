@@ -10,7 +10,7 @@ class RichTextField(SanitizerMixin, models.TextField):
         super(RichTextField, self).__init__(*args, **kwargs)
 
     def formfield(self, **kwargs):
-        kwargs['widget'] = RichTextWidget(
+        kwargs["widget"] = RichTextWidget(
             field_settings=self.field_settings, sanitizer=self.sanitizer
         )
         return super(RichTextField, self).formfield(**kwargs)

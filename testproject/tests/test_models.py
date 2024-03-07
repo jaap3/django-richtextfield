@@ -6,7 +6,7 @@ from djrichtextfield.widgets import RichTextWidget
 
 
 def empty_string(value):
-    return ''
+    return ""
 
 
 class TestRichTextField(TestCase):
@@ -21,8 +21,8 @@ class TestRichTextField(TestCase):
         Model field passes setting to widget
         """
         settings = {
-            'foo': True,
-            'bar': [1, 2, 3],
+            "foo": True,
+            "bar": [1, 2, 3],
         }
         widget = RichTextField(field_settings=settings).formfield().widget
         self.assertEqual(widget.field_settings, settings)
@@ -39,19 +39,19 @@ class TestRichTextField(TestCase):
         """
         Model field sanitizes values on clean with the provided sanitizer
         """
-        field = RichTextField(sanitizer=lambda value: 'test' + value)
-        self.assertEqual('testbar', field.clean('bar', None))
+        field = RichTextField(sanitizer=lambda value: "test" + value)
+        self.assertEqual("testbar", field.clean("bar", None))
 
     def test_field_validates_after_sanitizer(self):
         """
         Required field raises ValidationError if sanitizer returns empty
         """
         field = RichTextField(blank=False, sanitizer=empty_string)
-        self.assertRaises(ValidationError, field.clean, 'fancy text', None)
+        self.assertRaises(ValidationError, field.clean, "fancy text", None)
 
         # No error if field is allowed to be blank
         field = RichTextField(blank=True, sanitizer=empty_string)
-        field.clean('fancy text', None)
+        field.clean("fancy text", None)
 
     def test_sanitizer_handles_none(self):
         """
@@ -61,4 +61,4 @@ class TestRichTextField(TestCase):
         try:
             field.clean(None, None)
         except Exception:
-            raise AssertionError('Expected no errors')
+            raise AssertionError("Expected no errors")

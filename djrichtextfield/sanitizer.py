@@ -12,8 +12,8 @@ class SanitizerMixin:
     Get the field sanitizer from the provided kwargs during init, or from the settings.
     """
 
-    SANITIZER_KEY = 'sanitizer'
-    SANITIZER_PROFILES_KEY = 'sanitizer_profiles'
+    SANITIZER_KEY = "sanitizer"
+    SANITIZER_PROFILES_KEY = "sanitizer_profiles"
 
     def __init__(self, *args, sanitizer=None, **kwargs):
         self.sanitizer = sanitizer
@@ -34,7 +34,7 @@ class SanitizerMixin:
 
         if not sanitizer:
             default_sanitizer = settings.CONFIG.get(self.SANITIZER_KEY)
-            field_settings = getattr(self, 'field_settings', None)
+            field_settings = getattr(self, "field_settings", None)
             if isinstance(field_settings, str):
                 profiles = settings.CONFIG.get(self.SANITIZER_PROFILES_KEY, {})
                 sanitizer = profiles.get(field_settings, default_sanitizer)

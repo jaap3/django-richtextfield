@@ -53,7 +53,7 @@ class TestRichTextWidget(TestCase):
         value_from_datadict doesn't sanitize None values
         """
         widget = RichTextWidget()
-        self.assertEqual(None, widget.value_from_datadict({}, {}, "baz"))
+        self.assertIsNone(widget.value_from_datadict({}, {}, "baz"))
 
     def test_init_sanitizer_is_used_by_value_from_datadict(self):
         """

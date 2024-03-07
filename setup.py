@@ -3,7 +3,7 @@ import sys
 
 from setuptools import setup
 
-version = "1.6.2.dev0"
+version = "1.6.2"
 
 if sys.argv[-1] == "publish":
     os.system("python setup.py sdist bdist_wheel upload")

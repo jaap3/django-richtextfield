@@ -1,7 +1,7 @@
 History
 -------
 
-1.6.2 (unreleased)
+1.6.2 (2024-03-07)
 ^^^^^^^^^^^^^^^^^^
 
 - Code refresh, no functional changes

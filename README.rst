@@ -6,7 +6,7 @@ Django Rich Text Field
     :target: https://pypi.python.org/pypi/django-richtextfield/
     :alt: Latest Version
 
-.. image:: https://github.com/jaap3/django-richtextfield/actions/workflows/ci.yml/badge.svg?branch=master
+.. image:: https://github.com/jaap3/django-richtextfield/actions/workflows/ci.yml/badge.svg?branch=main
     :target: https://github.com/jaap3/django-richtextfield/actions/workflows/ci.yml
 
 A Django model field and widget that renders a customizable rich
